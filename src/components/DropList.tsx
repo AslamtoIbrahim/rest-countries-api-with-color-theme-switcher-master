@@ -9,7 +9,7 @@ const DropList = () => {
     setDrop((prev) => !prev);
   };
   return (
-    <div className="w-fit mx-4 my-10 space-y-2 relative">
+    <div className="w-fit mx-4 my-5 space-y-2 relative">
       <section
         onClick={dropListClick}
         className="flex items-center gap-8  px-6 py-3 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
