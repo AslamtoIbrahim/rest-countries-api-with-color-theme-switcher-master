@@ -5,6 +5,7 @@ import Search from "./Search";
 import { getCountries } from "../api/apiClient";
 import type { Country } from "../utils/types";
 import CountryCard from "./CountryCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { isPending, error, data } = useQuery<Country[]>({
@@ -40,7 +41,9 @@ const Home = () => {
       {/* list of countries goes down here */}
       <section className="space-y-10 overflow-y-auto">
         {data.map((country) => (
-          <CountryCard country={country} key={country.name} />
+          <Link className="block" to="/details" state={{data, country}}>
+            <CountryCard country={country} key={country.name} />
+          </Link>
         ))}
       </section>
     </div>
