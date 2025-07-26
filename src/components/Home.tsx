@@ -13,12 +13,22 @@ const Home = () => {
   });
 
   if (isPending) {
-    return <div className="h-screen flex items-center justify-center">
-      <p className="capitalize font-bold text-blue-950 dark:text-white/90">Loading...</p>
-    </div>;
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <p className="capitalize font-bold text-blue-950 dark:text-white/90">
+          Loading...
+        </p>
+      </div>
+    );
   }
   if (error) {
-    return <p>{error.message}</p>;
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <p className="capitalize font-bold text-red-400 dark:text-red-600">
+          {error.message}
+        </p>
+      </div>
+    );
   }
   return (
     <div>
