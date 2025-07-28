@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "./App.css";
-import Home from "./components/Home";
-import Details from "./components/Details";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Details from "./components/Details";
 import NotFound from "./components/NotFound";
+import Home from "./components/Home";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/details",
     Component: Details,
+    errorElement: <NotFound />
   },
 ]);
 

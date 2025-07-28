@@ -58,7 +58,7 @@ const Details = () => {
             <p className="">
               currencies:
               {country.currencies.map((cur) => (
-                <span className="font-normal"> {cur.code}</span>
+                <span key={cur.code} className="font-normal"> {cur.code}</span>
               ))}
             </p>
             <p className="">
@@ -75,7 +75,7 @@ const Details = () => {
               {country.borders.map((b) => {
                 const border = search(data, b);
                 if (!border) return;
-                return <BorderCountryButton data={data} country={border} />;
+                return <BorderCountryButton key={b} data={data} country={border} />;
               })}
             </div>
           </div>
