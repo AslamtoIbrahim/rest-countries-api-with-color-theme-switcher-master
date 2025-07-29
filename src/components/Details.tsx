@@ -75,7 +75,7 @@ const Details = () => {
             <p className="">border countries:</p>
             <div className="flex flex-wrap gap-2">
               {/* <BorderCountryButton text="French" /> */}
-              {country.borders.map((b) => {
+              {country.borders?.map((b) => {
                 const border = search(data, b);
                 if (!border) return;
                 return <BorderCountryButton key={b} data={data} country={border} />;
