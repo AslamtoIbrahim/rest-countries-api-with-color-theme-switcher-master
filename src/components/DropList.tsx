@@ -30,22 +30,22 @@ const DropList = ({ onSelect }: DropListProps) => {
     setDrop((prev) => !prev);
   };
   return (
-    <div className="w-48 mx-4 my-5 space-y-2 relative">
+    <div className="w-50 md:w-fit mx-4 md:mx-8 lg:mx-12 xl:mx-14 2xl:mx-16 my-5 relative  ">
       <section
         onClick={dropListClick}
-        className="flex justify-between items-center gap-8  px-6 py-3 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
+        className="flex justify-between items-center gap-8  px-6 md:px-8 lg:px-10 xl:px-12 py-3 md:py-4 lg:py-5 xl:py-6 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
       text-blue-950 dark:text-white/70 cursor-pointer"
       >
-        <p className="font-nunito text-sm">{region}</p>
+        <p className="font-nunito text-sm md:text-base lg:text-lg xl:text-xl">{region}</p>
         <FontAwesomeIcon
-          className="w-3"
+          className="text-sm md:text-base lg:text-lg xl:text-xl"
           icon={drop ? faChevronUp : faChevronDown}
         />
       </section>
 
       <section
         className={`py-2 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
-      text-blue-950 dark:text-white/70 absolute w-full
+      text-blue-950 dark:text-white/70 absolute w-full mt-2 lg:mt-4
       transition-all duration-300 ease-in-out  ${
         drop ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
       }`}
@@ -54,7 +54,7 @@ const DropList = ({ onSelect }: DropListProps) => {
           <button
             onClick={() => onSelectRegion(reg)}
             key={index}
-            className="px-6 py-1 w-full text-start font-nunito text-sm cursor-pointer hover:bg-grey-400/5 "
+            className="px-6 md:px-8 py-1 md:py-2 lg:px-10 w-full text-start  font-nunito text-sm md:text-base lg:text-lg xl:text-xl cursor-pointer hover:bg-grey-400/5 "
           >
             {reg}
           </button>

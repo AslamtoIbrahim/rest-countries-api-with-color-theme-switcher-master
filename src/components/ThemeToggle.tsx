@@ -21,11 +21,11 @@ const ThemeToggle = () => {
   };
   return (
     <div
-      className="flex items-center gap-2 cursor-pointer"
+      className="flex items-center gap-2 xl:gap-4 cursor-pointer"
       onClick={toggleTheme}
     >
-      <FontAwesomeIcon icon={isDark ? solidMoon : faMoon} />
-      <p className="font-sans capitalize">Dark mode</p>
+      <FontAwesomeIcon className="lg:text-xl 2xl:text-2xl" icon={isDark ? solidMoon : faMoon} />
+      <p className="font-sans capitalize md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Dark mode</p>
     </div>
   );
 };

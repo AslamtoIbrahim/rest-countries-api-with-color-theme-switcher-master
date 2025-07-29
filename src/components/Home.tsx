@@ -28,7 +28,8 @@ const Home = () => {
   if (isPending) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <p className="capitalize font-bold text-blue-950 dark:text-white/90">
+        <p className="capitalize font-bold text-blue-950 dark:text-white/90 
+        text-sm md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl">
           Loading...
         </p>
       </div>
@@ -37,7 +38,8 @@ const Home = () => {
   if (error) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <p className="capitalize font-bold text-red-400 dark:text-red-600">
+        <p className="capitalize font-bold text-red-400 dark:text-red-600 
+        text-sm md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl">
           {error.message}
         </p>
       </div>
@@ -46,12 +48,13 @@ const Home = () => {
   return (
     <div>
       <Head />
-      <section className="sticky top-0 dark:bg-blue-950 bg-grey-50 pt-1 pb-1">
+      <section className="lg:flex lg:justify-between lg:items-center sticky top-0 dark:bg-blue-950 bg-grey-50 pt-1 pb-1 2xl:px-16">
         <Search onChange={onChnageSearch} />
         <DropList onSelect={onSelectRegion} />
       </section>
       {/* list of countries goes down here */}
-      <section className="space-y-10 overflow-y-auto pb-4">
+      <section className="space-y-10 overflow-y-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-4 xl:gap-8 2xl:gap-16 lg:space-y-0
+      lg:px-12 lg:py-5 xl:px-14 2xl:px-30">
         {filters(data, search, region).map((country) => (
           <Link
             key={country.name}
