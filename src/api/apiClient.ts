@@ -1,5 +1,5 @@
 export const getCountries = async () => {
-  const res = await fetch("../../public/sources/data.json");
+  const res = await fetch("/public/data.json");
   return res.json();
 };
 
