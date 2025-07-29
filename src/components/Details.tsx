@@ -17,7 +17,7 @@ const Details = () => {
       <Head />
       <BackButton />
       <section className="lg:mt-24 xl:mt-36 2xl:mt-44 mx-4 my-14 md:mx-8 lg:mx-12 xl:mx-14 2xl:mx-30 xl:grid xl:grid-cols-2 xl:gap-10 2xl:gap-26 xl:items-center ">
-        <div className="h-50 md:h-96 xl:h-full">
+        <div className="h-50 md:h-96 xl:h-full shadow-xl">
           <img
             className="h-full object-cover md:object-full md:w-full"
             src={country.flags.svg}

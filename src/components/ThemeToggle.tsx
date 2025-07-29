@@ -21,7 +21,7 @@ const ThemeToggle = () => {
   };
   return (
     <div
-      className="flex items-center gap-2 xl:gap-4 cursor-pointer"
+      className="flex items-center gap-2 xl:gap-4 cursor-pointer hover:text-grey-400 dark:hover:text-grey-50/70"
       onClick={toggleTheme}
     >
       <FontAwesomeIcon className="lg:text-xl 2xl:text-2xl" icon={isDark ? solidMoon : faMoon} />
