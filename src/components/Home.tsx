@@ -48,13 +48,13 @@ const Home = () => {
   return (
     <div>
       <Head />
-      <section className="lg:flex lg:justify-between lg:items-center sticky top-0 dark:bg-blue-950 bg-grey-50 pt-1 pb-1 2xl:px-16">
+      <section className="lg:flex lg:justify-between lg:items-center sticky top-0 pt-1 pb-1 mgx bg-gray-50 dark:bg-blue-950">
         <Search onChange={onChnageSearch} />
         <DropList onSelect={onSelectRegion} />
       </section>
       {/* list of countries goes down here */}
-      <section className="space-y-10 overflow-y-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-4 xl:gap-8 2xl:gap-16 lg:space-y-0
-      lg:px-12 lg:py-5 xl:px-14 2xl:px-30">
+      <section className="space-y-10 overflow-y-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6 xl:gap-8 2xl:gap-10 lg:space-y-0
+      lg:py-5 mgx">
         {filters(data, search, region).map((country) => (
           <Link
             key={country.name}

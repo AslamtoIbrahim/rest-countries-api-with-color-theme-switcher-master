@@ -30,7 +30,7 @@ const DropList = ({ onSelect }: DropListProps) => {
     setDrop((prev) => !prev);
   };
   return (
-    <div className="w-50 md:w-fit mx-4 md:mx-8 lg:mx-12 xl:mx-14 2xl:mx-16 my-5 relative  ">
+    <div className="w-50 md:w-fit mx-4 md:mx-8 lg:mx-0 my-5 relative  ">
       <section
         onClick={dropListClick}
         className="flex justify-between items-center gap-8  px-6 md:px-8 lg:px-10 xl:px-12 py-3 md:py-4 lg:py-5 xl:py-6 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 

@@ -15,7 +15,7 @@ const Search = ({ onChange }: SearchProps) => {
   return (
     <label
       htmlFor="search"
-      className="mx-4 md:mx-8 lg:mx-12 xl:mx-14 2xl:mx-16 my-8 px-6 md:px-7 lg:px-8 xl:px-10 py-3 md:py-4 lg:py-5 xl:py-6 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
+      className="mx-4 md:mx-8 lg:mx-0  my-8 px-6 md:px-7 lg:px-8 xl:px-10 py-3 md:py-4 lg:py-5 xl:py-6 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
     flex items-center gap-5 lg:gap-6"
     >
       <FontAwesomeIcon
