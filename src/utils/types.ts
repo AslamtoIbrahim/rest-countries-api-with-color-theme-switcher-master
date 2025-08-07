@@ -1,35 +1,54 @@
+type Name = {
+  common: string;
+};
+
 type Flags = {
-  svg: string;
   png: string;
+  svg: string;
+  alt: string;
 };
 
 export type Country = {
-  name: string;
+  name: Name;
   population: number;
   region: string;
-  capital: string;
+  capital: string[];
   flags: Flags;
 };
 
+
+export type Paginate = {
+  data: Country[];
+  pageParam?: number;
+};
+
 type Currency = {
-  code: string;
+  EUR: {
+    name: string;
+  };
 };
 
 type Language = {
-  name: string;
+  [key: string]: string;
+};
+
+type NativeName = {
+  nld: {
+    common: string;
+  };
 };
 
 export type CountryDetail = {
   flags: Flags;
-  name: string;
-  alpha3Code: string;
+  name: Name;
+  cioc: string;
   borders: string[];
-  nativeName: string;
+  nativeName: NativeName;
   population: number;
   region: string;
   subregion: string;
-  capital: string;
-  topLevelDomain: string[];
-  currencies: Currency[];
-  languages: Language[];
+  capital: string[];
+  tld: string[];
+  currencies: Currency;
+  languages: Language;
 };
