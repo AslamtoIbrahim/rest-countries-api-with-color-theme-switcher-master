@@ -1,4 +1,9 @@
-import type { Country, Paginate } from "../utils/types";
+import type {
+  BorderNames,
+  Country,
+  CountryDetail,
+  Paginate,
+} from "../utils/types";
 
 // export const getCountries = async (): Promise<Country[]> => {
 //   return fetch(
@@ -86,7 +91,55 @@ export const paginateCountries = ({ data, pageParam = 1 }: Paginate) => {
   const pageSize = 9;
   const start = 0;
   const end = pageParam * pageSize;
-  console.log("🦗 s: ", start, " e: ", end);
 
   return data.slice(start, end);
+};
+
+export const getCountryDetails = async ({
+  queryKey,
+}: {
+  queryKey: [string, { name?: string }];
+}): Promise<CountryDetail> => {
+  const [, { name }] = queryKey;
+
+  if (!name) {
+    throw new Error(`This ${name} is not provided`);
+  }
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${name}?fields=name,population,region,capital,flags,borders,subregion,tld,currencies,languages`
+  );
+
+  if (!res.ok) {
+    throw new Error(`Country ${name} Not found`);
+  }
+
+  const data = await res.json();
+  return data[0];
+};
+
+export const getAllCountryNames = async (): Promise<BorderNames[]> => {
+  const res = await fetch(
+    `https://restcountries.com/v3.1/all?fields=name,cca3`
+  );
+  if (!res.ok) {
+    throw new Error(`Somthin went wrong 🧧`);
+  }
+
+  return await res.json();
+};
+
+export const translateBorderCodesToNames = (
+  borders: string[],
+  borderCodeNames: BorderNames[]
+) => {
+  const apiResponseMap = new Map<string, string>();
+ 
+  borderCodeNames.forEach((c: BorderNames) => {
+    apiResponseMap.set(c.cca3, c.name.common);
+  });
+
+  console.log('🍯 border: ', borders);
+  
+
+  return borders.map((code) => apiResponseMap.get(code.toUpperCase())).filter(f => f !== undefined);
 };

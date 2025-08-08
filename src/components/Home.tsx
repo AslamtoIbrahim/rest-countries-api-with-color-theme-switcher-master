@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import { getCountries, paginateCountries } from "../api/apiClient";
+import type { Country } from "../utils/types";
 import CountryCard from "./CountryCard";
 import DropList from "./DropList";
 import Head from "./Head";
 import Search from "./Search";
-import type { Country } from "../utils/types";
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -19,6 +19,8 @@ const Home = () => {
     queryFn: getCountries,
   });
 
+  
+
   let countries: Country[] = [];
 
   if (data) countries = paginateCountries({ data: data, pageParam: page });
@@ -29,9 +31,6 @@ const Home = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("nice job 🍓");
-      console.log("🔋 countries.length : ", countries.length);
-      console.log("💛 data.length : ", data?.length);
       setPage((prev) => prev + 1);
     }
   }, [inView, countries.length, data?.length]);
@@ -75,8 +74,7 @@ const Home = () => {
             <Link
               key={country.name.common}
               className="block"
-              to="/details"
-              state={{ data, country }}
+              to={`/countries/${country.name.common.toLowerCase()}`}
             >
               <CountryCard country={country} />
             </Link>
@@ -85,7 +83,7 @@ const Home = () => {
       {countries && data && countries.length < data?.length && (
         <div
           ref={ref}
-          className="mx-auto text-center text-sm font-bold text-blue-950 capitalize md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl dark:text-white/90"
+          className="mx-auto text-center size font-bold text-blue-950 capitalize  dark:text-white/90"
         >
           Loading...
         </div>

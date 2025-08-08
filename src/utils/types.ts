@@ -1,5 +1,6 @@
 type Name = {
   common: string;
+  nativeName: NativeName;
 };
 
 type Flags = {
@@ -23,7 +24,7 @@ export type Paginate = {
 };
 
 type Currency = {
-  EUR: {
+  [key: string]: {
     name: string;
   };
 };
@@ -33,7 +34,7 @@ type Language = {
 };
 
 type NativeName = {
-  nld: {
+  [key: string]: {
     common: string;
   };
 };
@@ -43,7 +44,6 @@ export type CountryDetail = {
   name: Name;
   cioc: string;
   borders: string[];
-  nativeName: NativeName;
   population: number;
   region: string;
   subregion: string;
@@ -52,3 +52,9 @@ export type CountryDetail = {
   currencies: Currency;
   languages: Language;
 };
+
+
+export type BorderNames = {
+  name: Name;
+  cca3: string;
+}

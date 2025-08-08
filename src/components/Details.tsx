@@ -1,17 +1,56 @@
-import { useLocation } from "react-router-dom";
-import { search } from "../utils/funtions";
-import type { CountryDetail } from "../utils/types";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  getAllCountryNames,
+  getCountryDetails,
+  translateBorderCodesToNames,
+} from "../api/apiClient";
+import type { BorderNames } from "../utils/types";
 import BackButton from "./BackButton";
 import BorderCountryButton from "./BorderCountryButton";
 import Head from "./Head";
 
-type LocationSate = {
-  data: CountryDetail[];
-  country: CountryDetail;
-};
 const Details = () => {
-  const location = useLocation() as { state: LocationSate };
-  const { data, country } = location.state || {};
+  const { name } = useParams();
+  const { isPending, error, data } = useQuery({
+    queryKey: ["countryDetails", { name: name }],
+    queryFn: getCountryDetails,
+  });
+  const [countryBorders, setCountryBorders] = useState<BorderNames[]>([]);
+
+  useEffect(() => {
+    const loading = async () => {
+      const countryNames = await getAllCountryNames();
+      console.log("🌍 borders: ", countryNames);
+      setCountryBorders(countryNames);
+    };
+    loading();
+  }, []);
+
+  if (isPending) {
+    return (
+      <div className="col-span-3 flex h-screen items-center justify-center">
+        <p className="mx-auto size text-center  font-bold text-blue-950 capitalize  dark:text-white/90">
+          Loading...
+        </p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="col-span-3 flex h-screen items-center">
+        <p className="mx-auto size text-center  font-bold text-blue-950 capitalize  dark:text-white/90">
+          {error.message}
+        </p>
+      </div>
+    );
+  }
+  const country = data;
+
+  // get the last common native name
+  const natives = Object.values(country.name.nativeName);
+
   return (
     <div>
       <Head />
@@ -22,18 +61,20 @@ const Details = () => {
             <img
               className="md:object-full h-full object-cover md:w-full"
               src={country.flags.svg}
-              alt="flag country"
+              alt={country.flags.alt}
             />
           </div>
           <div className="font-nunito space-y-6 px-4 py-6 md:px-0 lg:space-y-10 xl:space-y-12 2xl:space-y-14">
-            <p className="text-xm font-bold capitalize md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl dark:text-white/90">
-              {country.name}
+            <p className="text-xm font-bold capitalize md:mt-6 md:text-base lg:text-2xl dark:text-white/90">
+              {country.name.common}
             </p>
-            <section className="space-y-6 lg:space-y-0 xl:grid xl:grid-cols-2 xl:gap-4 2xl:gap-8">
-              <div className="space-y-2 size font-semibold text-blue-950/85 capitalize md:space-y-4  dark:text-white/80">
+            <section className="space-y-6 lg:grid lg:grid-cols-2 xl:gap-4 2xl:gap-8">
+              <div className="space font-semibold text-blue-950/85 capitalize md:space-y-4 dark:text-white/80">
                 <p className="">
                   Native Name:{" "}
-                  <span className="font-normal">{country.nativeName}</span>
+                  <span className="font-normal">
+                    {natives[natives.length - 1].common}
+                  </span>
                 </p>
                 <p className="">
                   Population:{" "}
@@ -53,38 +94,33 @@ const Details = () => {
                   <span className="font-normal">{country.capital}</span>
                 </p>
               </div>
-              <div className="space-y-2 size font-semibold text-blue-950/85 capitalize lg:space-y-4   xl:space-y-8  dark:text-white/80">
+              <div className="size space font-semibold text-blue-950/85 capitalize lg:space-y-4 xl:space-y-8 dark:text-white/80">
                 <p className="">
                   top level domain:{" "}
-                  <span className="font-normal">{country.topLevelDomain}</span>
+                  <span className="font-normal">{country.tld}</span>
                 </p>
-                <p className="">
-                  currencies:
-                  {country.currencies.map((cur) => (
-                    <span key={cur.code} className="font-normal">
-                      {" "}
-                      {cur.code}
-                    </span>
-                  ))}
+                <p>
+                  currencies:{" "}
+                  <span className="font-normal">
+                    {Object.values(country.currencies)[0].name}
+                  </span>
                 </p>
                 <p className="">
                   Languages:{" "}
                   <span className="font-normal">
-                    {country.languages.map((lg) => lg.name).join(", ")}
+                    {Object.values(country.languages).reverse().join(", ")}
                   </span>
                 </p>
               </div>
             </section>
-            <div className="space-y-2 font-semibold text-blue-950/85 capitalize lg:space-y-4 text-sm lg:text-base xl:space-y-8 xl:text-lg 2xl:text-xl dark:text-white/80">
+            <div className="space-y-2 text-sm font-semibold text-blue-950/85 capitalize lg:space-y-4 lg:text-base xl:space-y-8 xl:text-lg 2xl:text-xl dark:text-white/80">
               <p>border countries:</p>
               <div className="flex flex-wrap gap-2">
-                {/* <BorderCountryButton text="French" /> */}
-                {country.borders?.map((b) => {
-                  const border = search(data, b);
-                  if (!border) return;
-                  return (
-                    <BorderCountryButton key={b} data={data} country={border} />
-                  );
+                {translateBorderCodesToNames(
+                  country.borders,
+                  countryBorders,
+                ).map((b) => {
+                  return <BorderCountryButton key={b} name={b} />;
                 })}
               </div>
             </div>

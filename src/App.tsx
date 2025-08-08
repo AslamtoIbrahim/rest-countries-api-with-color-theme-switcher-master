@@ -11,10 +11,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: Home,
-    // errorElement: <NotFound />
+    errorElement: <NotFound />
   },
   {
-    path: "/details",
+    path: "/countries/:name",
     Component: Details,
     errorElement: <NotFound />
   },
