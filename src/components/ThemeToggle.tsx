@@ -21,11 +21,14 @@ const ThemeToggle = () => {
   };
   return (
     <div
-      className="flex items-center gap-2 xl:gap-4 cursor-pointer hover:text-grey-400 dark:hover:text-grey-50/70"
+      className="hover:text-grey-400 dark:hover:text-grey-50/70 flex cursor-pointer items-center gap-2 xl:gap-4"
       onClick={toggleTheme}
     >
-      <FontAwesomeIcon className="lg:text-xl 2xl:text-2xl" icon={isDark ? solidMoon : faMoon} />
-      <p className="font-sans capitalize md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">Dark mode</p>
+      <FontAwesomeIcon
+        className="icon-size"
+        icon={isDark ? solidMoon : faMoon}
+      />
+      <p className="head-size font-sans capitalize">Dark mode</p>
     </div>
   );
 };

@@ -47,27 +47,28 @@ const Home = () => {
   return (
     <div>
       <Head />
-      <section className="mgx sticky top-0 bg-gray-50 pt-1 pb-1 lg:flex lg:items-center lg:justify-between dark:bg-blue-950">
+      <section className="mgx sticky my-4 md:my-6 top-0 space-y-4 md:space-y-6  lg:space-y-0 bg-gray-50 pt-1 pb-1 lg:flex lg:items-center lg:justify-between dark:bg-blue-950">
         <Search onChange={onChnageSearch} />
         <DropList onSelect={onSelectRegion} />
       </section>
-      {/* list of countries goes down here */}
-      <section className="mgx space-y-10 overflow-y-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:space-y-0 lg:py-5 xl:grid-cols-4 xl:gap-8 2xl:gap-10">
-        {error && (
-          <div className="col-span-3 flex h-[60rem] items-center">
-            <p className="mx-auto text-center text-sm font-bold text-blue-950 capitalize md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl dark:text-white/90">
+       <section>
+         {error && (
+          <div className="wait">
+            <p className="wait-design">
               {error.message}
             </p>
           </div>
         )}
 
         {isPending && (
-          <div className="col-span-3 flex h-[60rem] items-center">
-            <p className="mx-auto text-center text-sm font-bold text-blue-950 capitalize md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl dark:text-white/90">
+          <div className="wait">
+            <p className="wait-design">
               Loading...
             </p>
           </div>
         )}
+       </section>
+      <section className="mgx space-y-10 overflow-y-auto  md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-0 lg:gap-6 lg:space-y-0 lg:py-5 xl:grid-cols-4 xl:gap-8 2xl:gap-12">
 
         {countries &&
           countries.map((country) => (

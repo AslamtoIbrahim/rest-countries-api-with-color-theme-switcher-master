@@ -31,7 +31,7 @@ const Details = () => {
   if (isPending) {
     return (
       <div className="col-span-3 flex h-screen items-center justify-center">
-        <p className="mx-auto size text-center  font-bold text-blue-950 capitalize  dark:text-white/90">
+        <p className="size mx-auto text-center font-bold text-blue-950 capitalize dark:text-white/90">
           Loading...
         </p>
       </div>
@@ -40,7 +40,7 @@ const Details = () => {
   if (error) {
     return (
       <div className="col-span-3 flex h-screen items-center">
-        <p className="mx-auto size text-center  font-bold text-blue-950 capitalize  dark:text-white/90">
+        <p className="size mx-auto text-center font-bold text-blue-950 capitalize dark:text-white/90">
           {error.message}
         </p>
       </div>
@@ -56,8 +56,8 @@ const Details = () => {
       <Head />
       <div className="mgx">
         <BackButton />
-        <section className="mx-4 my-14 md:mx-8 lg:mx-0 lg:mt-20 xl:mt-24 xl:grid xl:grid-cols-2 xl:items-center xl:gap-10 2xl:mt-30 2xl:gap-26">
-          <div className="h-50 shadow-xl md:h-96 md:max-w-lg xl:h-full xl:max-w-full">
+        <section className="mx-4 my-8 md:mx-8 lg:mx-0 lg:mt-20 xl:mt-40 xl:grid xl:grid-cols-2 xl:items-center xl:gap-12 2xl:mt-30 2xl:gap-26">
+          <div className="h-50 shadow-xl md:h-66 md:max-w-lg lg:h-74 xl:h-full xl:max-w-full">
             <img
               className="md:object-full h-full object-cover md:w-full"
               src={country.flags.svg}
@@ -65,11 +65,11 @@ const Details = () => {
             />
           </div>
           <div className="font-nunito space-y-6 px-4 py-6 md:px-0 lg:space-y-10 xl:space-y-12 2xl:space-y-14">
-            <p className="text-xm font-bold capitalize md:mt-6 md:text-base lg:text-2xl dark:text-white/90">
+            <p className="text-xm font-bold capitalize md:text-base lg:text-2xl dark:text-white/90">
               {country.name.common}
             </p>
-            <section className="space-y-6 lg:grid lg:grid-cols-2 xl:gap-4 2xl:gap-8">
-              <div className="space font-semibold text-blue-950/85 capitalize md:space-y-4 dark:text-white/80">
+            <section className="size space-y-6 md:grid md:grid-cols-2 xl:gap-6 2xl:gap-8">
+              <div className="space font-semibold text-blue-950/85 capitalize dark:text-white/80">
                 <p className="">
                   Native Name:{" "}
                   <span className="font-normal">
@@ -94,7 +94,7 @@ const Details = () => {
                   <span className="font-normal">{country.capital}</span>
                 </p>
               </div>
-              <div className="size space font-semibold text-blue-950/85 capitalize lg:space-y-4 xl:space-y-8 dark:text-white/80">
+              <div className="size space font-semibold text-blue-950/85 capitalize dark:text-white/80">
                 <p className="">
                   top level domain:{" "}
                   <span className="font-normal">{country.tld}</span>
@@ -113,7 +113,7 @@ const Details = () => {
                 </p>
               </div>
             </section>
-            <div className="space-y-2 text-sm font-semibold text-blue-950/85 capitalize lg:space-y-4 lg:text-base xl:space-y-8 xl:text-lg 2xl:text-xl dark:text-white/80">
+            <div className="space-y-4 text-sm font-semibold text-blue-950/85 capitalize lg:space-y-4 lg:text-base xl:space-y-8 xl:text-lg 2xl:text-xl dark:text-white/80">
               <p>border countries:</p>
               <div className="flex flex-wrap gap-2">
                 {translateBorderCodesToNames(
