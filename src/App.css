@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 @custom-variant dark (&:where(.dark, .dark *));
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
 
 @theme {
   --color-blue-900: hsl(209, 23%, 22%);
@@ -10,27 +11,25 @@
   --color-grey-50: hsl(0, 0%, 99%);
   --color-white: hsl(0, 100%, 100%);
 
-  --font-nunito: "Nunito Sans", sans-serif;
+  --font-nunito: "Nunito", sans-serif;
 }
 
 @layer components {
   .mgx {
-    @apply md:max-w-2xl lg:max-w-4xl md:mx-auto xl:max-w-7xl 2xl:max-w-[110rem];
+    @apply md:max-w-2xl lg:max-w-4xl md:mx-auto xl:max-w-5xl 2xl:max-w-[68rem];
   }
   .size {
-    @apply text-xs md:text-sm font-semibold capitalize lg:space-y-5 lg:text-base xl:space-y-8 xl:text-xl;
+    @apply text-xs md:text-sm  capitalize lg:space-y-2  ;
   }
   .space {
-    @apply space-y-2 md:space-y-3 lg:space-y-5  xl:space-y-6;
+    @apply space-y-2 ;
   }
-  .head-size {
-    @apply text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl;
-  }
+
   .filter-size {
-    @apply text-xs md:text-sm lg:text-base;
+    @apply text-xs md:text-sm;
   }
   .icon-size {
-    @apply md:text-base lg:text-lg xl:text-xl 2xl:text-2xl;
+    @apply text-xs md:text-sm;
   }
   .wait {
     @apply col-span-3 flex  items-center h-[30rem];
@@ -40,5 +39,5 @@
   }
 }
 body {
-  @apply bg-grey-50 dark:bg-blue-950;
+  @apply bg-grey-50 dark:bg-blue-950 ;
 }

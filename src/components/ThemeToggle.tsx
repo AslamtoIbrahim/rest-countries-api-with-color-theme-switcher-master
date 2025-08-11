@@ -25,10 +25,10 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
     >
       <FontAwesomeIcon
-        className="icon-size"
+        className="icon-size -rotate-[25deg]"
         icon={isDark ? solidMoon : faMoon}
       />
-      <p className="head-size font-sans capitalize">Dark mode</p>
+      <p className="text-xs md:text-base font-sans capitalize">Dark mode</p>
     </div>
   );
 };

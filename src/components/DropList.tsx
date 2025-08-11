@@ -30,13 +30,12 @@ const DropList = ({ onSelect }: DropListProps) => {
     setDrop((prev) => !prev);
   };
   return (
-    <div className="w-50 md:w-fit mx-4 md:mx-8 lg:mx-0  relative  ">
+    <div className="relative mx-4 w-50 md:mx-8 md:w-fit lg:mx-0 font-nunito font-light text-xs md:text-sm">
       <section
         onClick={dropListClick}
-        className="flex justify-between items-center gap-8 px-6 md:px-8 lg:px-10 xl:px-12 py-3 md:py-4 lg:py-5 xl:py-6 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
-      text-blue-950 dark:text-white/70 cursor-pointer"
+        className="flex cursor-pointer items-center justify-between gap-8 rounded-md bg-white px-4 py-4 text-blue-950 shadow-lg/8 shadow-blue-900 md:px-5 dark:bg-blue-900 dark:text-white/95"
       >
-        <p className="font-nunito filter-size">{region}</p>
+        <p>{region}</p>
         <FontAwesomeIcon
           className="icon-size"
           icon={drop ? faChevronUp : faChevronDown}
@@ -44,17 +43,17 @@ const DropList = ({ onSelect }: DropListProps) => {
       </section>
 
       <section
-        className={`py-2 bg-white dark:bg-blue-900 shadow-lg/8 shadow-blue-900 rounded-md 
-      text-blue-950 dark:text-white/70 absolute w-full mt-2 lg:mt-4
-      transition-all duration-300 ease-in-out  ${
-        drop ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
-      }`}
+        className={`absolute mt-2 w-full rounded-md bg-white py-2 text-blue-950 shadow-lg/8 shadow-blue-900 transition-all duration-300 ease-in-out lg:mt-4 dark:bg-blue-900 dark:text-white/95 ${
+          drop
+            ? "visible scale-100 opacity-100"
+            : "invisible scale-95 opacity-0"
+        }`}
       >
         {regions.map((reg, index) => (
           <button
             onClick={() => onSelectRegion(reg)}
             key={index}
-            className="px-6 md:px-8 py-1 md:py-2 lg:px-10 w-full text-start  font-nunito filter-size cursor-pointer hover:bg-grey-400/5 "
+            className="hover:bg-grey-400/5 w-full cursor-pointer px-5 py-2 text-start md:px-6 "
           >
             {reg}
           </button>

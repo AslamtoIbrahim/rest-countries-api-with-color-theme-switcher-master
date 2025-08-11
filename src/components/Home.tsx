@@ -19,7 +19,9 @@ const Home = () => {
     queryFn: getCountries,
   });
 
-  
+  console.log('🏀 outer width: ',window.outerWidth);
+  console.log('🏀 inner width: ',window.innerWidth);
+  console.log('🏀 client width : ',document.documentElement.clientWidth);
 
   let countries: Country[] = [];
 
@@ -47,7 +49,7 @@ const Home = () => {
   return (
     <div>
       <Head />
-      <section className="mgx sticky my-4 md:my-6 top-0 space-y-4 md:space-y-6  lg:space-y-0 bg-gray-50 pt-1 pb-1 lg:flex lg:items-center lg:justify-between dark:bg-blue-950">
+      <section className="mgx sticky my-6 top-0 space-y-4 md:space-y-6  lg:space-y-0 bg-gray-50 pt-1 pb-1 lg:flex lg:items-center lg:justify-between dark:bg-blue-950">
         <Search onChange={onChnageSearch} />
         <DropList onSelect={onSelectRegion} />
       </section>
