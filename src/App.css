@@ -16,7 +16,7 @@
 
 @layer components {
   .mgx {
-    @apply md:max-w-2xl lg:max-w-4xl md:mx-auto xl:max-w-5xl 2xl:max-w-[68rem];
+    @apply md:max-w-2xl lg:max-w-4xl md:mx-auto xl:max-w-5xl 2xl:max-w-[72rem];
   }
   .size {
     @apply text-xs md:text-sm  capitalize lg:space-y-2  ;

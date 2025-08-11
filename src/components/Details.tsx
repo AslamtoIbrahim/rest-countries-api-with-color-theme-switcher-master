@@ -59,7 +59,7 @@ const Details = () => {
         <section className="mx-4 my-8 md:mx-8 lg:mx-0 lg:mt-16 xl:grid xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-30">
           <div className="h-50 shadow-xl md:h-66 md:max-w-lg lg:h-76">
             <img
-              className="h-full md:object-cover"
+              className="h-full md:object-cover w-full"
               src={country.flags.svg}
               alt={country.flags.alt}
             />
@@ -122,8 +122,8 @@ const Details = () => {
                 </p>
               </div>
             </section>
-            <div className="dark:text-white/80 space-y-2 text-sm font-semibold text-blue-950/85 capitalize xl:space-y-0 xl:flex xl:items-center xl:gap-5 ">
-              <p>border countries:</p>
+            <div className="dark:text-white/80 space-y-2 text-sm font-semibold text-blue-950/85 capitalize xl:space-y-0 xl:flex xl:items-start xl:gap-5 ">
+              <p className="lg:flex-1/2">border countries:</p>
               <div className="flex flex-wrap gap-2">
                 {translateBorderCodesToNames(
                   country.borders,
