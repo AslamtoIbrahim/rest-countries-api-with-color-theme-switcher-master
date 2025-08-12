@@ -56,13 +56,16 @@ const Details = () => {
       <Head />
       <div className="mgx">
         <BackButton />
-        <section className="mx-4 my-8 md:mx-8 lg:mx-0 lg:mt-16 xl:grid xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-30">
+        <section className="mx-4 xs:mx-8 my-8 md:mx-8 lg:mx-0 lg:mt-16 xl:grid xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-30">
           <div className="h-50 shadow-xl md:h-66 md:max-w-lg lg:h-76">
-            <img
-              className="h-full md:object-cover w-full"
-              src={country.flags.svg}
-              alt={country.flags.alt}
-            />
+            <picture>
+              <source media="(min-width: 425px)" srcSet={country.flags.svg} />
+              <img
+                className="h-full md:object-cover w-full"
+                src={country.flags.png}
+                alt={country.flags.alt}
+              />
+            </picture>
           </div>
           <div className="font-nunito space-y-4 px-4 py-6 lg:py-0 md:px-0 lg:space-y-4 lg:my-auto">
             <p className="text-xm font-bold capitalize md:text-base lg:text-xl dark:text-white/90">
