@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"); */
 
 @theme {
   --color-blue-900: hsl(209, 23%, 22%);
@@ -10,7 +11,7 @@
   --color-grey-50: hsl(0, 0%, 99%);
   --color-white: hsl(0, 100%, 100%);
 
-  --font-nunito: "Nunito", sans-serif;
+  --font-nunito: "League Spartan", sans-serif;
 
   --breakpoint-xs: 26.5625rem;
 }
@@ -22,12 +23,15 @@
   .size {
     @apply text-xs md:text-sm  capitalize lg:space-y-2;
   }
+  .spn {
+    @apply dark:text-white/65 font-normal;
+  }
   .space {
     @apply space-y-2;
   }
 
   .filter-size {
-    @apply text-xs md:text-sm;
+    @apply text-sm;
   }
   .icon-size {
     @apply text-xs md:text-sm;
